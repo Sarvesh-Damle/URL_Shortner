@@ -3,9 +3,9 @@ const express = require("express");
 const path = require("path");
 const helmet = require("helmet");
 const cors = require("cors");
-const { connectToMongoDB } = require("./connect");
-const urlRoute = require("./routes/url");
-const URL = require("./models/url");
+const { connectToMongoDB } = require("../connect");
+const urlRoute = require("../routes/url");
+const URL = require("../models/url");
 
 const app = express();
 const PORT = process.env.PORT || 8001;
@@ -19,7 +19,7 @@ connectToMongoDB(process.env.MONGODB_URI)
   .catch((err) => console.log("Mongo error", err));
 
 app.set("view engine", "ejs");
-app.set("views", path.resolve("./views"));
+app.set("views", path.join(__dirname, "../views"));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

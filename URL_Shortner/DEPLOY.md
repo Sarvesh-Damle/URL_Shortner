@@ -19,7 +19,7 @@ This project is configured to run on Vercel as a Serverless Function.
     *   `MONGODB_URI`: Your MongoDB connection string (e.g., `mongodb+srv://...`)
     *   `BASE_URL`: The domain Vercel assigns you (e.g., `https://your-project.vercel.app`)
 
-**Note:** The `vercel.json` is configured to route all traffic to `index.js`.
+**Note:** The `vercel.json` is configured to route all traffic to `api/index.js` using rewrites.
 
 ## 3. Option B: Render (Alternative for Persistent Server)
 If you prefer a traditional server approach or if Vercel limits are restrictive:
