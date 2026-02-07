@@ -3,19 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>URL Shortener</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; text-align: center; }
+        .error { color: red; background: #ffe6e6; padding: 10px; border-radius: 4px; }
+        .success { color: green; background: #e6ffe6; padding: 10px; border-radius: 4px; }
+        input { padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; font-size: 1.2em; }
+    </style>
 </head>
 <body>
-    <div>
-        <% if (locals.id) { %>
-            <p>Short URL Generated: http://localhost:8001/<%= id %></p>
-        <% } %>
-    </div>
-    <h1>URL Shortner</h1>
-    <div>
+    <h1>URL Shortener</h1>
+
+    <% if (locals.error) { %>
+        <div class="error"><%= error %></div>
+    <% } %>
+
+    <% if (locals.id) { %>
+        <div class="success">
+            <p>Short URL Generated:</p>
+            <p class="result"><a href="<%= baseUrl %>/<%= id %>" target="_blank"><%= baseUrl %>/<%= id %></a></p>
+        </div>
+    <% } %>
+
+    <div style="margin-top: 30px;">
         <form method="post" action="/url">
-            <label>Enter Your Original URL: </label>
-            <input type="text" name="url" placeholder="https://example.com">
+            <label>Enter Your Original URL: </label><br><br>
+            <input type="url" name="url" placeholder="https://example.com" required>
             <button type="submit">Generate Short URL</button>
         </form>
     </div>
