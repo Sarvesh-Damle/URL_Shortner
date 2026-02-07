@@ -15,7 +15,7 @@ This is a production-ready URL shortener service built with Node.js and Express.
 
 ### Architecture
 
-*   `index.js`: The main entry point. Configures middleware (Helmet, CORS), handles environment variables, and exports the app for Vercel.
+*   `api/index.js`: The main entry point. Configures middleware (Helmet, CORS), handles environment variables, and exports the app for Vercel. Moved to `api/` for better Vercel compatibility.
 *   `connect.js`: Database connection utility.
 *   `models/url.js`: Mongoose schema for the URL model.
 *   `controllers/url.js`: Logic for generating IDs, handling redirects with click tracking, and providing analytics.
